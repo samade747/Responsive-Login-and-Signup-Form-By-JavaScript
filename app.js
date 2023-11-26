@@ -1,3 +1,6 @@
+
+
+
 function registerNow(){
     event.preventDefault();
     var fullName = document.getElementById('fullName');
@@ -6,8 +9,11 @@ function registerNow(){
     var password = document.getElementById('Password');
     var confirmPassword = document.getElementById('ConfirmPassword');
 
-    console.log(fullName.value, number.value, email.value, password.value, confirmPassword.value);
+    if(fullName === '' && number === '' && email === '' && password === '' && confirmPassword === ''){
+        alert(`please fill all feilds carefuly`)
+    } else {
 
+    
     var userData = {
         fullName : fullName.value,
         number : number.value,
@@ -16,15 +22,13 @@ function registerNow(){
         confirmPassword : confirmPassword.value
 
     }
-    console.log(userData);
-
     localStorage.setItem("userData", JSON.stringify(userData));
 
     var getUserData = JSON.parse(localStorage.getItem("userData"));
-    console.log(getUserData);
 
-
-
-    
-    
+    console.log(getUserData);    
 }
+}
+
+
+    
