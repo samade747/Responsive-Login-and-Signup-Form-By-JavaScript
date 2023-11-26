@@ -12,11 +12,7 @@ function registerNow(){
     if(fullName.value === '' || number.value === '' || email.value === '' || password.value === '' || confirmPassword.value === '') {
         alert(`please fill all feilds carefuly`);
     } else {
-
-        
-        
-
-    
+            
     var userData = {
         fullName : fullName.value,
         number : number.value,
