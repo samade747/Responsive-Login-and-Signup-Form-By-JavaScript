@@ -9,9 +9,12 @@ function registerNow(){
     var password = document.getElementById('Password');
     var confirmPassword = document.getElementById('ConfirmPassword');
 
-    if(fullName.value === '' && number.value === '' && email.value === '' && password.value === '' && confirmPassword === ''){
-        alert(`please fill all feilds carefuly`)
+    if(fullName.value === '' || number.value === '' || email.value === '' || password.value === '' || confirmPassword.value === '') {
+        alert(`please fill all feilds carefuly`);
     } else {
+
+        
+        
 
     
     var userData = {
