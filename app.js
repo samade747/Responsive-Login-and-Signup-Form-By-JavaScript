@@ -10,9 +10,17 @@ function registerNow(){
     var confirmPassword = document.getElementById('ConfirmPassword');
 
     if(fullName.value === '' || number.value === '' || email.value === '' || password.value === '' || confirmPassword.value === '') {
-        alert(`please fill all feilds carefuly`);
+        Swal.fire({
+            icon: "error",
+            title: "required...",
+            text: "please fill all fields carefully!",            
+          });
     } else if (password.value !== confirmPassword.value) {
-        alert(`passowrd & confirm Password mismatched`);
+        Swal.fire({
+            icon: "error",
+            title: "password...",
+            text: "Password & Confirm Password Mismatch!",            
+          });
     }  else {
     
             
