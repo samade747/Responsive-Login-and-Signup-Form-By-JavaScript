@@ -35,7 +35,7 @@ function registerNow(){
           });
           Toast.fire({
             icon: "success",
-            title: "Registered successfully"
+            title: `${fullName.value} Registered successfully`
           });
     
             
