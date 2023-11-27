@@ -11,7 +11,10 @@ function registerNow(){
 
     if(fullName.value === '' || number.value === '' || email.value === '' || password.value === '' || confirmPassword.value === '') {
         alert(`please fill all feilds carefuly`);
-    } else {
+    } else if (password.value !== confirmPassword.value) {
+        alert(`passowrd & confirm Password mismatched`);
+    }  else {
+    
             
     var userData = {
         fullName : fullName.value,
