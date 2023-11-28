@@ -66,7 +66,9 @@ function registerNow(){
 
     localStorage.setItem("users", JSON.stringify(userDataMain));
 
-    
+    setTimeout(() =>{
+      window.location.href = './dashboard.html'
+    },4000);
 
     console.log(getUserData);    
 }
