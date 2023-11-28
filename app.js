@@ -4,6 +4,8 @@
     var email = document.getElementById('Email');
     var password = document.getElementById('Password');
     var confirmPassword = document.getElementById('ConfirmPassword');
+    var text1 = document.getElementById('text1');
+
 
     let userDataMain = [];
     userDataMain = JSON.parse(localStorage.getItem("users")) || [];
@@ -70,9 +72,10 @@ function registerNow(){
       window.location.href = './dashboard.html'
     },4000);
 
+    text1 = `${fullName.value} welcome to login Page`
+
     console.log(getUserData);    
 }
 }
 
 
-    
