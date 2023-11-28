@@ -11,17 +11,24 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center mt-5">
-                <h1>Register Now</h1>
+                <h1>SignUp Now</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-11 col p-2">
                 <form onsubmit="registerNow();">
-                    <div class="mb-3 mt-2">
+                    <div class="row">
+                    <div class="col-md-6 col-sm-6 mb-3">
                         <label for="FullName" class="form-label">Full Name</label>
                         <input type="text" class="form-control" id="fullName" aria-describedby="text">
                         <div id="fullNameHelp" class="form-text">Enter your full Name</div>
                       </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label for="username" class="form-label">User Name</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="text">
+                        <div id="fullNameHelp" class="form-text">Enter your username</div>
+                      </div>
+                    </div>
 
                       <div class="mb-3">
                         <label for="Number" class="form-label">Phone Number</label>
@@ -52,7 +59,7 @@
                     </div>
                  </div>
                 </div>
-                    <button type="submit" class="btn btn-primary">Register Now</button>
+                    <button type="submit" class="btn btn-primary">SignUp Now</button>
                   </form>
 
             </div>
