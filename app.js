@@ -68,14 +68,20 @@ function registerNow(){
 
     localStorage.setItem("users", JSON.stringify(userDataMain));
 
+    
+
     setTimeout(() =>{
-      window.location.href = './dashboard.html'
-    },4000);
+      window.location.replace('./dashboard.html');
+      // window.location.href = './dashboard.html'
+      
+    },3000);
 
-    text1 = `${fullName.value} welcome to login Page`
+    
+      
 
-    console.log(getUserData);    
+    
 }
+
 }
 
 
