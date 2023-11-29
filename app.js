@@ -85,3 +85,7 @@ function registerNow(){
 }
 
 
+function getData(){
+  
+
+}
