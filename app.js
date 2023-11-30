@@ -90,10 +90,10 @@ function getData(){
   userDataMain = JSON.parse(localStorage.getItem("users"));
   getUserData.innerHTML = `
   <ul>
-    <li>fullName: ${userDataMain.fullName} </li>
-    <li>Email: ${userDataMain.email}</li>
-    <li>userName: ${userDataMain.userName}</li>
-    <li>number: ${userDataMain.number} </li>
+    <li>fullName: ${userDataMain[0].fullName} </li>
+    <li>Email: ${userDataMain[0].email}</li>
+    <li>userName: ${userDataMain[0].userName}</li>
+    <li>number: ${userDataMain[0].number} </li>
   </ul>
   `
   
