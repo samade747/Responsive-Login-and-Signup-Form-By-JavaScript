@@ -86,6 +86,15 @@ function registerNow(){
 
 
 function getData(){
+  var getUserData = document.querySelector('#getData');
+  userDataMain = JSON.parse(localStorage.getItem("users"));
+  getUserData.innerHTML = `
+  <ul>
+    <li>fullName: ${userDataMain.fullName} </li>
+    <li>Email: ${userDataMain.email}</li>
+    <li>userName: ${userDataMain.userName}</li>
+    <li>number: ${userDataMain.number} </li>
+  </ul>
+  `
   
-
 }
