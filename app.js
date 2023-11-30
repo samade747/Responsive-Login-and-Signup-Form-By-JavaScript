@@ -98,3 +98,14 @@ function getData(){
   `
   
 }
+
+
+function redirectionsignup(){
+  window.location.href = './signin.html'
+}
+
+
+function logOut() {
+  
+  setTimeout(redirectionsignup, 1000);    
+}
