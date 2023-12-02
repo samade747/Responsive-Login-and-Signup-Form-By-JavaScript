@@ -71,7 +71,7 @@ function registerNow(){
     
 
     setTimeout(() =>{
-      window.location.replace('./dashboard.html');
+      window.location.replace('./signin.html');
       // window.location.href = './dashboard.html'
       
     },3000);
