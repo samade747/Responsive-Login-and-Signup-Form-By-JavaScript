@@ -101,11 +101,78 @@ function getData(){
 
 
 function redirectionsignup(){
-  window.location.href = './signin.html'
+  window.location.replace('./signin.html');
+}
+
+function redirectiontomainpage(){
+  window.location.replace('./index.html');
+  
 }
 
 
-function logOut() {
-  
+
+
+function logOut() {  
   setTimeout(redirectionsignup, 1000);    
+}
+
+function login(){
+  event.preventDefault();
+  const email = document.getElementById('Email');
+  const password = document.getElementById('Password');
+  userDataMain = JSON.parse(localStorage.getItem("users")) 
+
+  console.log(email);
+  console.log(password);
+  console.log(userDataMain);
+
+  if(!userDataMain){
+    console.log(!userDataMain);
+    return window.location.href = './signin.html'
+  } else if (userDataMain.email !== email.value && userDataMain.password !== password.value){
+  Swal.fire({
+    icon: "error",
+    title: "email & password...",
+    text: "email or Password Invalid or Mismatch!",            
+  });
+} 
+else {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+  Toast.fire({
+    icon: "success",
+    title: `${email.value} login successfully`
+  });
+
+setTimeout(() =>{
+  window.location.replace('./dashboard.html'); 
+  },4000);
+}  
+}
+
+
+
+function password_show_hide() {
+  var x = document.getElementById("password");
+  var show_eye = document.getElementById("show_eye");
+  var hide_eye = document.getElementById("hide_eye");
+  hide_eye.classList.remove("d-none");
+  if (x.type === "password") {
+    x.type = "text";
+    show_eye.style.display = "none";
+    hide_eye.style.display = "block";
+  } else {
+    x.type = "password";
+    show_eye.style.display = "block";
+    hide_eye.style.display = "none";
+  }
 }
