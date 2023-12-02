@@ -116,27 +116,59 @@ function logOut() {
   setTimeout(redirectionsignup, 1000);    
 }
 
+
+
+
 function login(){
   event.preventDefault();
-  const email = document.getElementById('Email');
-  const password = document.getElementById('Password');
-  userDataMain = JSON.parse(localStorage.getItem("users")) 
+  const email = document.getElementById('Email').value;
+  const password = document.getElementById('Password').value;
+  userDataMain = JSON.parse(localStorage.getItem("users")) || [];
+ 
 
-  console.log(email);
-  console.log(password);
-  console.log(userDataMain);
+  if(userDataMain.length === 0){
+    Swal.fire({
+      icon: "error",
+      title: "No users found",
+      text: "Please sign up before logging in!",
+    });
+    return;
+  }
 
-  if(!userDataMain){
-    console.log(!userDataMain);
-    return window.location.href = './signin.html'
-  } else if (userDataMain.email !== email.value && userDataMain.password !== password.value){
-  Swal.fire({
-    icon: "error",
-    title: "email & password...",
-    text: "email or Password Invalid or Mismatch!",            
-  });
-} 
-else {
+  let user = userDataMain.find((user) => user.email === email);
+
+  if(!user){
+    Swal.fire({
+      icon: "error",
+      title: "User not found",
+      text: "Email or Password is invalid!",
+    });
+    return;
+  } 
+  
+  if(user.password !== password){
+    Swal.fire({
+      icon: "error",
+      title: "Password mismatch",
+      text: "Email or Password is invalid!",
+    });
+    return;
+  }
+
+
+  
+
+//   if(!userDataMain){
+//     console.log(!userDataMain);
+//     return window.location.href = './signin.html'
+//   } else if (userDataMain.email !== email.value || userDataMain.password !== password.value){
+//   Swal.fire({
+//     icon: "error",
+//     title: "email & password...",
+//     text: "email or Password Invalid or Mismatch!",            
+//   });
+// } 
+
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -150,19 +182,17 @@ else {
   });
   Toast.fire({
     icon: "success",
-    title: `${email.value} login successfully`
+    title: `${email} login successfully`
   });
 
 setTimeout(() =>{
   window.location.replace('./dashboard.html'); 
   },4000);
-}  
+
 }
 
-
-
 function password_show_hide() {
-  var x = document.getElementById("password");
+  var x = document.getElementById("Password");
   var show_eye = document.getElementById("show_eye");
   var hide_eye = document.getElementById("hide_eye");
   hide_eye.classList.remove("d-none");
@@ -172,6 +202,23 @@ function password_show_hide() {
     hide_eye.style.display = "block";
   } else {
     x.type = "password";
+    show_eye.style.display = "block";
+    hide_eye.style.display = "none";
+  }
+}
+
+
+function password_show_hide1() {
+  var xx = document.getElementById("ConfirmPassword");
+  var show_eye = document.getElementById("show_eyee");
+  var hide_eye = document.getElementById("hide_eyee");
+  hide_eye.classList.remove("d-none");
+  if (xx.type === "Password") {
+    xx.type = "text";
+    show_eye.style.display = "none";
+    hide_eye.style.display = "block";
+  } else {
+    xx.type = "password";
     show_eye.style.display = "block";
     hide_eye.style.display = "none";
   }
