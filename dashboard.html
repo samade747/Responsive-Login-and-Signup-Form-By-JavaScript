@@ -53,21 +53,26 @@
                     </ul>
                   </div>
 
-                  <div class="ms-auto d-flex align-items-center">
+                  <!-- <div class="ms-auto d-flex align-items-center">
                     <span class="card" style="width: 2rem; border-radius: 50%;" >                      
                       <img src="./images/profile.png" class="card-img-top" alt="profile image">                                                                                                                     
-                    </span>
+                    </span> -->
 
+                    <div class="ms-auto d-flex align-items-center">
                     <div class="dropdown">
-                      <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                      <button class="d-flex dropdown-toggle align-items-center justify-content-center" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                        <span class="card" style="width: 2rem; border-radius: 50%;" >                      
+                          <img src="./images/profile.png" class="card-img-top" alt="profile image">                                                                                                                     
+                        </span>
                         
                       </button>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu dropdown-menu-end">
                         <li><button class="dropdown-item" type="button" onclick="logOut()">logout</button></li>
-                        <!-- <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button" >Something else here</button></li> -->
+                        <li><button class="dropdown-item" type="button" disabled>Another action</button></li>
+                        <li><button class="dropdown-item" type="button" disabled>Something else here</button></li>
                       </ul>
                     </div>
+                  </div>
 
 
 
