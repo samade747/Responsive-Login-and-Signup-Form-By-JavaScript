@@ -1,1 +1,70 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body, html{
+    height: 100vh;
+    margin: 0;
+}
+
+/* .sideBar-main {
+    display: flex;
+    height: 100%;
+    
+}
+.sideBar-container {
+    display: flex;
+    height: 100%;
+}
+
+
+
+
+.sideBar1-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 30%;
+    height: 100%;
+    background-color: rgba(240,242,245,255) !important;
+}
+
+
+.Social-Media{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px;
+    
+
+}
+
+
+
+.home-pages ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4rem;
+    font-size: x-large;
+    margin-right: 30px;
+    margin-top: 40px;
+ 
+   
+} */
+
+.sideBar{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;    
+    z-index: 1;
+    background-color: rgba(240,242,245,255) !important;
+}
