@@ -11,69 +11,116 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid ">
-              <a class="navbar-brand justify-content-start" href="#"> <img src="./images/facebook logo.png" width="30px" alt=""></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              
-              <div class="collapse navbar-collapse flex-grow-0 " id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 text-center">
-                    <form class="d-flex"  role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search facebook" aria-label="Search" style="border-radius: 50px;">
-                        <button class="btn btn-primary" type="submit" style="border-radius: 50px;">Search </button>
-                      </form>
-                
-                  <li class="nav-item justify-content-center">
-                    <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-house-door  btn btn-outline-primary dark" style="width: 120px;"></i></a>
-                  </li>
-                  <li class="nav-item justify-content-center">
-                    <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-youtube  btn btn-outline-primary dark" style="width: 120px;"></i></a>
-                  </li>
-                  <li class="nav-item justify-content-center">
-                    <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-shop  btn btn-outline-primary dark" style="width: 120px;"></i></a>
-                  </li>
-                  <li class="nav-item justify-content-center">
-                    <a class="nav-link active " aria-current="page" href="#">  <i class="bi bi-people btn btn-outline-primary dark " style="width: 120px;" ></i></a>
-                  </li>
-                  <li class="nav-item justify-content-center">
-                    <a class="nav-link active " aria-current="page" href="#">  <i class="bi bi-controller btn btn-outline-primary dark " style="width: 120px;" ></i></a>
-                  </li>
-                
-                  <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li> -->
-                  <!-- <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                  </li> -->
-                </ul>
-                
-              </div>
-            </div>
-          </nav>
     
+    
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand justify-content-start" href="#">
+                    <img src="./images/facebook logo.png" width="30px" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="card" style="width: 2rem;">                      
+                        <img src="./images/profile.png" class="card-img-top" alt="profile image" >                                                                         
+                    </span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex align-items-center">                      
+                        
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search Facebook" aria-label="Search" style="border-radius: 50px;">
+                            <button class="btn btn-primary" type="submit" style="border-radius: 50px;">Search</button>
+                        </form>
+                    </div>
+
+                  <div>
+                    <ul class="navbar-nav mb-2 mb-lg-0 ">
+                      <li class="nav-item ">
+                        <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-house-door  btn btn-outline-primary dark" style="width: 120px;"></i></a>
+                      </li>
+                      <li class="nav-item  ">
+                        <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-youtube  btn btn-outline-primary dark" style="width: 120px;"></i></a>
+                      </li>
+                      <li class="nav-item  ">
+                        <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-shop  btn btn-outline-primary dark" style="width: 120px;"></i></a>
+                      </li>
+                      <li class="nav-item  ">
+                        <a class="nav-link active " aria-current="page" href="#">  <i class="bi bi-people btn btn-outline-primary dark " style="width: 120px;" ></i></a>
+                      </li>
+                      <li class="nav-item  ">
+                        <a class="nav-link active " aria-current="page" href="#">  <i class="bi bi-controller btn btn-outline-primary dark " style="width: 120px;" ></i></a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="ms-auto d-flex align-items-center">
+                    <span class="card" style="width: 2rem; border-radius: 50%;" >                      
+                      <img src="./images/profile.png" class="card-img-top" alt="profile image">                                                                                                                     
+                    </span>
+
+                    <div class="dropdown">
+                      <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                        
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><button class="dropdown-item" type="button" onclick="logOut()">logout</button></li>
+                        <!-- <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button" >Something else here</button></li> -->
+                      </ul>
+                    </div>
 
 
 
 
-    <div class="container">
+
+
+                  </div>
+
+
+                </div>
+            </div>
+        </nav>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container">
         <div class="row">
             <div class="col d-flex justify-content-end align-items-end">               
-                 <!-- <button class="btn btn-primary" onclick=""></button> -->
+                 <button class="btn btn-primary" onclick=""></button>
                  <button class="btn btn-primary" onclick="logOut()">sign out</button>                
             </div>            
         </div>        
-    </div>
+    </div> -->
     
 
     <!-- <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
