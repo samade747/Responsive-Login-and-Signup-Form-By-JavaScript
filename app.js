@@ -316,7 +316,7 @@ function addPost(){
 
 
 window.onload = function () {
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) ;
 
   if (loggedInUser) {
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
