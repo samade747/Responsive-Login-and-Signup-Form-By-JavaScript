@@ -222,6 +222,13 @@ function addPost(){
   const postContent = document.getElementById('postContent');
   const cardContainer = document.getElementById('cardContainer');
   const postTime = new Date().toLocaleString();
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
+
+
+  if (!loggedInUser) {
+    window.location.replace('./signin.html');
+    return;
+  }
 
   if (!postContent.value.trim()) {
     Swal.fire({
@@ -232,39 +239,77 @@ function addPost(){
     return;
   }
 
-const newPost = document.createElement('div');
-newPost.className = 'card-header';
-newPost.innerHTML = `
-  
-  <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
-  <span id="UserName">${loggedInUser.fullName}</span>
-  <p class="card-text"><small class="text-body-secondary">${postTime}</small></p>               
-</div>
-<div class="card mb-3">
-<img src="" class="card-img-top" alt="" id="cardimage">
-<div class="card-body">
-  <h5 class="card-title" id="cardtitle"></h5>
-  <p class="card-text" id="cardtext">${postContent.value}</p>
-</div>
-</div>`
-
-cardContainer.appendChild(newPost);
-
-postContent.value = '';
-
-postContent.value = '';
-
-  // Save the post in localStorage
-  const posts = JSON.parse(localStorage.getItem('posts')) || [];
-  posts.push({
+  const newPost = {
     user: loggedInUser.fullName,
     time: postTime,
     content: postContent.value,
-  });
-  localStorage.setItem('posts', JSON.stringify(posts));
+  };
+
+  
+  const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+
+  
+  storedPosts.push(newPost);
+
+  
+  localStorage.setItem('posts', JSON.stringify(storedPosts));
+
+  
+  const postElement = document.createElement('div');
+  postElement.className = 'card-header';
+  postElement.innerHTML = `
+    <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
+    <span id="UserName">${newPost.user}</span>
+    <p class="card-text"><small class="text-body-secondary">${newPost.time}</small></p>               
+  </div>
+  <div class="card mb-3">
+    <img src="" class="card-img-top" alt="" id="cardimage">
+    <div class="card-body">
+      <h5 class="card-title" id="cardtitle"></h5>
+      <p class="card-text" id="cardtext">${newPost.content}</p>
+    </div>
+  </div>`;
+
+  cardContainer.appendChild(postElement);
+
+  
+  postContent.value = '';
 
 
-localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+
+// const newPost = document.createElement('div');
+// newPost.className = 'card-header';
+// newPost.innerHTML = `
+  
+//   <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
+//   <span id="UserName">${loggedInUser.fullName}</span>
+//   <p class="card-text"><small class="text-body-secondary">${postTime}</small></p>               
+// </div>
+// <div class="card mb-3">
+// <img src="" class="card-img-top" alt="" id="cardimage">
+// <div class="card-body">
+//   <h5 class="card-title" id="cardtitle"></h5>
+//   <p class="card-text" id="cardtext">${postContent.value}</p>
+// </div>
+// </div>`
+
+// cardContainer.appendChild(newPost);
+
+// postContent.value = '';
+
+// postContent.value = '';
+
+//   // Save the post in localStorage
+//   const posts = JSON.parse(localStorage.getItem('posts')) || [];
+//   posts.push({
+//     user: loggedInUser.fullName,
+//     time: postTime,
+//     content: postContent.value,
+//   });
+//   localStorage.setItem('posts', JSON.stringify(posts));
+
+
+// localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
 
 
 }
