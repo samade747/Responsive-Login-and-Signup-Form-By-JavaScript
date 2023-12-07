@@ -107,19 +107,20 @@
             <div class="col-sm-12">
             <div class="input-group mb-3 justify-content-center align-items-center">
               <span class="input-group-text" id="inputGroup-sizing-default"> <img src="./images/profile.png" alt="" width="30px"> </span>
-              <input type="text" class="form-control" placeholder="what is in your mind?" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">              
+              <input type="text" class="form-control" placeholder="what is in your mind?" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="postContent">              
             </div>
           </div>
-            <div class="row mb-5">
+            <div class="row ">
             <button onclick="" class="col  bi bi-camera-video-fill btn btn-outline-danger m-2" style="width: 12rem;">  live video</button>
             <button onclick="" class="col  bi bi-images btn btn-outline-danger m-2" style="width: 12rem;">  Photo / Video</button>
             <button onclick="" class="col  bi bi-emoji-laughing btn btn-outline-danger m-2" style="width: 12rem;">  Photo / Video</button>
           </div>
+          <button class="mb-5 btn btn-outline-primary" onclick="addPost()">Post Now </button>
           </div>
 
           <!-- posting content & box images  -->
-        <div class="card">
-            <div class="card-header">
+        <div class="card" id="cardContainer">
+            <!-- <div class="card-header">
               <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
               <span id="UserName">A</span>
               <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>               
@@ -130,7 +131,8 @@
               <h5 class="card-title" id="cardtitle">Card title</h5>
               <p class="card-text" id="cardtext">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
-          </div>
+          </div> -->
+          
         </div>
           
 

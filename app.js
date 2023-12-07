@@ -6,9 +6,11 @@
     var confirmPassword = document.getElementById('ConfirmPassword');
     var text1 = document.getElementById('text1');
 
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+    
     let userDataMain = [];
     userDataMain = JSON.parse(localStorage.getItem("users")) || [];
+
+    var loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
 
 function registerNow(){
     event.preventDefault();   
@@ -76,7 +78,7 @@ function registerNow(){
       window.location.replace('./signin.html');
       // window.location.href = './dashboard.html'
       
-    },3000);
+    },1000);
 
     
       
@@ -103,12 +105,11 @@ function getData(){
 
 
 function redirectionsignup(){
-  window.location.replace('./signin.html');
+  window.location.replace = './signin.html';
 }
 
-function redirectiontomainpage(){
-  window.location.replace('./index.html');
-  
+function redirectiontomainpage() {
+  window.location.href = './index.html';
 }
 
 
@@ -213,4 +214,45 @@ function password_show_hide1() {
     show_eye.style.display = "block";
     hide_eye.style.display = "none";
   }
+}
+
+
+
+function addPost(){
+  const postContent = document.getElementById('postContent');
+  const cardContainer = document.getElementById('cardContainer');
+
+  if (!postContent.value.trim()) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Post content required',
+      text: 'Please enter some content for your post!',
+    });
+    return;
+  }
+
+const newPost = document.createElement('div');
+newPost.className = 'card-header';
+newPost.innerHTML = `
+  
+  <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
+  <span id="UserName">${loggedInUser.fullName}</span>
+  <p class="card-text"><small class="text-body-secondary">${loggedInUser.fullName}</small></p>               
+</div>
+<div class="card mb-3">
+<img src="" class="card-img-top" alt="" id="cardimage">
+<div class="card-body">
+  <h5 class="card-title" id="cardtitle"></h5>
+  <p class="card-text" id="cardtext">${postContent.value}</p>
+</div>
+</div>`
+
+cardContainer.appendChild(newPost);
+
+postContent.value = '';
+
+
+localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+
+
 }
