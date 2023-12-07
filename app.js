@@ -6,7 +6,7 @@
     var confirmPassword = document.getElementById('ConfirmPassword');
     var text1 = document.getElementById('text1');
 
-
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
     let userDataMain = [];
     userDataMain = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -68,6 +68,8 @@ function registerNow(){
 
     localStorage.setItem("users", JSON.stringify(userDataMain));
 
+    loggedInUser = user;
+    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
     
 
     setTimeout(() =>{
@@ -155,19 +157,8 @@ function login(){
     return;
   }
 
-
-  
-
-//   if(!userDataMain){
-//     console.log(!userDataMain);
-//     return window.location.href = './signin.html'
-//   } else if (userDataMain.email !== email.value || userDataMain.password !== password.value){
-//   Swal.fire({
-//     icon: "error",
-//     title: "email & password...",
-//     text: "email or Password Invalid or Mismatch!",            
-//   });
-// } 
+  loggedInUser = user;
+  localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
 
   const Toast = Swal.mixin({
     toast: true,
