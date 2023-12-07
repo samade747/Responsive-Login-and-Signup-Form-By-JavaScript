@@ -221,6 +221,7 @@ function password_show_hide1() {
 function addPost(){
   const postContent = document.getElementById('postContent');
   const cardContainer = document.getElementById('cardContainer');
+  const postTime = new Date().toLocaleString();
 
   if (!postContent.value.trim()) {
     Swal.fire({
@@ -237,7 +238,7 @@ newPost.innerHTML = `
   
   <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
   <span id="UserName">${loggedInUser.fullName}</span>
-  <p class="card-text"><small class="text-body-secondary">${loggedInUser.fullName}</small></p>               
+  <p class="card-text"><small class="text-body-secondary">${postTime}</small></p>               
 </div>
 <div class="card mb-3">
 <img src="" class="card-img-top" alt="" id="cardimage">
