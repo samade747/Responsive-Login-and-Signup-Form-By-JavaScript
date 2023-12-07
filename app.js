@@ -252,8 +252,48 @@ cardContainer.appendChild(newPost);
 
 postContent.value = '';
 
+postContent.value = '';
+
+  // Save the post in localStorage
+  const posts = JSON.parse(localStorage.getItem('posts')) || [];
+  posts.push({
+    user: loggedInUser.fullName,
+    time: postTime,
+    content: postContent.value,
+  });
+  localStorage.setItem('posts', JSON.stringify(posts));
+
 
 localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
 
 
 }
+
+
+window.onload = function () {
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
+
+  if (loggedInUser) {
+    const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    const cardContainer = document.getElementById('cardContainer');
+
+    storedPosts.forEach((post) => {
+      const newPost = document.createElement('div');
+      newPost.className = 'card-header';
+      newPost.innerHTML = `
+        <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
+        <span id="UserName">${post.user}</span>
+        <p class="card-text"><small class="text-body-secondary">${post.time}</small></p>               
+      </div>
+      <div class="card mb-3">
+        <img src="" class="card-img-top" alt="" id="cardimage">
+        <div class="card-body">
+          <h5 class="card-title" id="cardtitle"></h5>
+          <p class="card-text" id="cardtext">${post.content}</p>
+        </div>
+      </div>`;
+
+      cardContainer.appendChild(newPost);
+    });
+  }
+};
