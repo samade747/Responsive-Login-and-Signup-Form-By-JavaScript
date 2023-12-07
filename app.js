@@ -105,7 +105,7 @@ function getData(){
 
 
 function redirectionsignup(){
-  window.location.replace = './signin.html';
+  window.location.href = './signin.html';
 }
 
 function redirectiontomainpage() {
