@@ -10,7 +10,17 @@
     let userDataMain = [];
     userDataMain = JSON.parse(localStorage.getItem("users")) || [];
 
-    var loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
+
+    function loginOn {
+      loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      if(loggedInUser) window.location.href = './signin.html'
+    
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loginOn();
+    });
 
 function registerNow(){
     event.preventDefault();   
@@ -105,11 +115,11 @@ function getData(){
 
 
 function redirectionsignup(){
-  window.location.href = './signin.html';
+  window.location.replace = './signin.html';
 }
 
 function redirectiontomainpage() {
-  window.location.href = './index.html';
+  window.location.replace = './index.html';
 }
 
 
@@ -215,6 +225,16 @@ function password_show_hide1() {
     hide_eye.style.display = "none";
   }
 }
+
+function loginOn {
+  loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+  if(loggedInUser) window.location.href = './signin.html'
+
+}
+
+
+
+
 
 
 
