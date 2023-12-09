@@ -115,11 +115,15 @@ function getData(){
 
 
 function redirectionsignup(){
-  window.location.replace = './signin.html';
+  window.location.href = './signin.html';
 }
 
+// function redirectiontomainpage() {
+//   window.location.href = './index.html';
+// }
+
 function redirectiontomainpage() {
-  window.location.replace = './index.html';
+  window.location.href = './index.html';
 }
 
 
