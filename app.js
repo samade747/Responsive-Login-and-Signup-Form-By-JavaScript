@@ -118,10 +118,6 @@ function redirectionsignup(){
   window.location.href = './signin.html';
 }
 
-// function redirectiontomainpage() {
-//   window.location.href = './index.html';
-// }
-
 function redirectiontomainpage() {
   window.location.href = './index.html';
 }
@@ -285,6 +281,7 @@ function addPost(){
     <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
     <span id="UserName">${newPost.user}</span>
     <p class="card-text"><small class="text-body-secondary">${newPost.time}</small></p>               
+    <button class="bi bi-pencil-square btn btn-outline-primary ms-5" onclick="edit()"> Edit</button>
   </div>
   <div class="card mb-3">
     <img src="" class="card-img-top" alt="" id="cardimage">
@@ -323,17 +320,17 @@ function addPost(){
 
 // postContent.value = '';
 
-//   // Save the post in localStorage
-//   const posts = JSON.parse(localStorage.getItem('posts')) || [];
-//   posts.push({
-//     user: loggedInUser.fullName,
-//     time: postTime,
-//     content: postContent.value,
-//   });
-//   localStorage.setItem('posts', JSON.stringify(posts));
+  
+  const posts = JSON.parse(localStorage.getItem('posts')) || [];
+  posts.push({
+    user: loggedInUser.fullName,
+    time: postTime,
+    content: postContent.value,
+  });
+  localStorage.setItem('posts', JSON.stringify(posts));
 
 
-// localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
 
 
 }

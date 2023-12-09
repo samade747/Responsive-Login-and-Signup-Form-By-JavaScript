@@ -8,6 +8,7 @@
 body, html{
     height: 100vh;
     margin: 0;
+    
 }
 
 /* .sideBar-main {
@@ -68,3 +69,5 @@ body, html{
     z-index: 1;
     background-color: rgba(240,242,245,255) !important;
 }
+
+
