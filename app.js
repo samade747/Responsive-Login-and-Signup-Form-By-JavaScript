@@ -291,7 +291,7 @@ function addPost(){
     </div>
   </div>`;
 
-  cardContainer.appendChild(postElement);
+  cardContainer.insertBefore(postElement, cardContainer.firstChild);
 
   
   postContent.value = '';
