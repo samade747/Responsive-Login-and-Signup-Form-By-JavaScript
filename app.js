@@ -10,17 +10,17 @@
     let userDataMain = [];
     userDataMain = JSON.parse(localStorage.getItem("users")) || [];
 
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
+    let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
 
-    function loginOn() {
-      loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
-      if(loggedInUser) window.location.href = './signin.html'
+    // function loginOn() {
+    //   loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+    //   if(loggedInUser) window.location.href = './signin.html'
     
-    }
+    // }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      loginOn();
-    });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   loginOn();
+    // });
 
 function registerNow(){
     event.preventDefault();   
