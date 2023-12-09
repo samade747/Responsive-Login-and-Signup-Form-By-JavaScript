@@ -12,7 +12,7 @@
 
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
 
-    function loginOn {
+    function loginOn() {
       loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
       if(loggedInUser) window.location.href = './signin.html'
     
@@ -226,11 +226,11 @@ function password_show_hide1() {
   }
 }
 
-function loginOn {
-  loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
-  if(loggedInUser) window.location.href = './signin.html'
+// function loginOn {
+//   loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+//   if(loggedInUser) window.location.href = './signin.html'
 
-}
+// }
 
 
 
