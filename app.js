@@ -324,12 +324,12 @@ function editPost(editButton) {
   console.log(postContainer);
   const postText = postContainer.querySelector('#cardtext');
   console.log(postText);
-  const newText = prompt('Edit your Post:', postText.innerText);
+  const editPostContent = document.getElementById('editPostContent')
 
-  if(newText !== null && newText.trim() !== ''){
-    postText.innerText = newText;
-    updateLocalStoragePosts();
-  }
+  editPostContent.value = postText.innerText;
+
+  const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+  editModal.show()
   
 }
 
@@ -338,7 +338,7 @@ function updateLocalStoragePosts() {
   const cardContainer = document.getElementById('cardContainer');
   const posts = [];
 
-  // Loop through all post elements and store them in the posts array
+  
   cardContainer.querySelectorAll('.card-header').forEach((header) => {
       const user = header.querySelector('#UserName').innerText;
       const time = header.querySelector('.text-body-secondary').innerText;
