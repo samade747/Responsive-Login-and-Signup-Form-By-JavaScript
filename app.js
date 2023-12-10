@@ -264,7 +264,7 @@ function addPost(){
     useremail: loggedInUser.email,
     time: postTime,
     content: postContent.value,
-    profileImg: loggedInUser.src,
+    
   };
 
   
@@ -283,7 +283,7 @@ function addPost(){
     <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
     <span id="UserName">${newPost.user}</span>
     <p class="card-text"><small class="text-body-secondary">${newPost.time}</small></p>               
-    ${newPost.useremail === loggedInUser.email ? '<button class="bi bi-pencil-square btn btn-outline-primary ms-5" onclick="edit(this)"> Edit</button>' : '' }
+    ${newPost.useremail === loggedInUser.email ? '<button class="bi bi-pencil-square btn btn-outline-primary ms-5" onclick="editPost(this)"> Edit</button>' : '' }
   </div>
   <div class="card mb-3">
     <img src="" class="card-img-top" alt="" id="cardimage">
@@ -300,28 +300,6 @@ function addPost(){
 
 
 
-// const newPost = document.createElement('div');
-// newPost.className = 'card-header';
-// newPost.innerHTML = `
-  
-//   <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
-//   <span id="UserName">${loggedInUser.fullName}</span>
-//   <p class="card-text"><small class="text-body-secondary">${postTime}</small></p>               
-// </div>
-// <div class="card mb-3">
-// <img src="" class="card-img-top" alt="" id="cardimage">
-// <div class="card-body">
-//   <h5 class="card-title" id="cardtitle"></h5>
-//   <p class="card-text" id="cardtext">${postContent.value}</p>
-// </div>
-// </div>`
-
-// cardContainer.appendChild(newPost);
-
-// postContent.value = '';
-
-// postContent.value = '';
-
   
   const posts = JSON.parse(localStorage.getItem('posts')) || [];
   posts.push({
@@ -337,6 +315,41 @@ localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
 
 }
 
+
+
+
+
+function editPost(editButton) {
+  const postContainer = editButton.parentElement.parentElement;
+  console.log(postContainer);
+  const postText = postContainer.querySelector('#cardtext');
+  console.log(postText);
+  const newText = prompt('Edit your Post:', postText.innerText);
+
+  if(newText !== null && newText.trim() !== ''){
+    postText.innerText = newText;
+    updateLocalStoragePosts();
+  }
+  
+}
+
+
+function updateLocalStoragePosts() {
+  const cardContainer = document.getElementById('cardContainer');
+  const posts = [];
+
+  // Loop through all post elements and store them in the posts array
+  cardContainer.querySelectorAll('.card-header').forEach((header) => {
+      const user = header.querySelector('#UserName').innerText;
+      const time = header.querySelector('.text-body-secondary').innerText;
+      const content = header.nextElementSibling.querySelector('#cardtext').innerText;
+
+      posts.push({ user, time, content });
+  });
+
+  
+  localStorage.setItem('posts', JSON.stringify(posts));
+}
 
 window.onload = function () {
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) ;
@@ -365,18 +378,3 @@ window.onload = function () {
     });
   }
 };
-
-
-function editPost(editButton) {
-  const postContainer = editButton.parentElement.parentElement;
-  console.log(postContainer);
-  const postText = postContainer.getElementById('cardtext');
-  console.log(postText);
-  const newText = prompt('Edit your Post:', postText.innerHTML);
-
-  if(newText !== null && newText.trim() !== ''){
-    postText.innerText = newText;
-    
-  }
-  
-}
