@@ -351,6 +351,32 @@ function updateLocalStoragePosts() {
   localStorage.setItem('posts', JSON.stringify(posts));
 }
 
+
+function saveChanges(){
+  const editPostContent = document.getElementById('editPostContent');
+  const newText = editPostContent.value;
+
+  const postText = document.querySelector('#cardtext');
+  postText.innerText = newText;
+
+  
+
+  const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+  editModal.hide();
+
+  updateLocalStoragePosts();
+
+
+}
+
+
+const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+editModal.hide();
+
+
+
+
+
 window.onload = function () {
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) ;
 
