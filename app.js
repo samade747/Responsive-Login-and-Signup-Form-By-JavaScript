@@ -261,8 +261,10 @@ function addPost(){
 
   const newPost = {
     user: loggedInUser.fullName,
+    useremail: loggedInUser.email,
     time: postTime,
     content: postContent.value,
+    profileImg: loggedInUser.src,
   };
 
   
@@ -281,7 +283,7 @@ function addPost(){
     <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
     <span id="UserName">${newPost.user}</span>
     <p class="card-text"><small class="text-body-secondary">${newPost.time}</small></p>               
-    <button class="bi bi-pencil-square btn btn-outline-primary ms-5" onclick="edit()"> Edit</button>
+    ${newPost.useremail === loggedInUser.email ? '<button class="bi bi-pencil-square btn btn-outline-primary ms-5" onclick="edit(this)"> Edit</button>' : '' }
   </div>
   <div class="card mb-3">
     <img src="" class="card-img-top" alt="" id="cardimage">
@@ -363,3 +365,18 @@ window.onload = function () {
     });
   }
 };
+
+
+function editPost(editButton) {
+  const postContainer = editButton.parentElement.parentElement;
+  console.log(postContainer);
+  const postText = postContainer.getElementById('cardtext');
+  console.log(postText);
+  const newText = prompt('Edit your Post:', postText.innerHTML);
+
+  if(newText !== null && newText.trim() !== ''){
+    postText.innerText = newText;
+    
+  }
+  
+}
