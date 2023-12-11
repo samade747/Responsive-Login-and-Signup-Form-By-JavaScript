@@ -12,15 +12,7 @@
 
     let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
 
-    // function loginOn() {
-    //   loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
-    //   if(loggedInUser) window.location.href = './signin.html'
     
-    // }
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   loginOn();
-    // });
 
 function registerNow(){
     event.preventDefault();   
@@ -99,19 +91,6 @@ function registerNow(){
 }
 
 
-function getData(){
-  var getUserData = document.querySelector('#getData');
-  userDataMain = JSON.parse(localStorage.getItem("users"));
-  getUserData.innerHTML = `
-  <ul>
-    <li>fullName: ${userDataMain[0].fullName} </li>
-    <li>Email: ${userDataMain[0].email}</li>
-    <li>userName: ${userDataMain[0].userName}</li>
-    <li>number: ${userDataMain[0].number} </li>
-  </ul>
-  `
-  
-}
 
 
 function redirectionsignup(){
@@ -226,11 +205,7 @@ function password_show_hide1() {
   }
 }
 
-// function loginOn {
-//   loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
-//   if(loggedInUser) window.location.href = './signin.html'
 
-// }
 
 
 
@@ -276,6 +251,8 @@ function addPost(){
   
   localStorage.setItem('posts', JSON.stringify(storedPosts));
 
+ 
+
   
   const postElement = document.createElement('div');
   postElement.className = 'card-header';
@@ -283,7 +260,11 @@ function addPost(){
     <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
     <span id="UserName">${newPost.user}</span>
     <p class="card-text"><small class="text-body-secondary">${newPost.time}</small></p>               
-    ${newPost.useremail === loggedInUser.email ? '<button class="bi bi-pencil-square btn btn-outline-primary ms-5" onclick="editPost(this)"> Edit</button>' : '' }
+    ${newPost.useremail === loggedInUser.email
+      ? `<button class="bi bi-pencil-square btn btn-outline-primary ms-2" onclick="editPost(this)">Edit</button>
+      <button class="bi bi-trash btn btn-outline-danger ms-2" onclick="deletePost(this)">Delete</button>`
+   : ''
+}
   </div>
   <div class="card mb-3">
     <img src="" class="card-img-top" alt="" id="cardimage">
@@ -312,6 +293,7 @@ function addPost(){
 
 localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
 
+updateLocalStoragePosts();
 
 }
 
@@ -324,7 +306,7 @@ function editPost(editButton) {
   console.log(postContainer);
   const postText = postContainer.querySelector('#cardtext');
   console.log(postText);
-  const editPostContent = document.getElementById('editPostContent')
+   const editPostContent = document.getElementById('editPostContent')
 
   editPostContent.value = postText.innerText;
 
@@ -338,19 +320,22 @@ function updateLocalStoragePosts() {
   const cardContainer = document.getElementById('cardContainer');
   const posts = [];
 
-  
   cardContainer.querySelectorAll('.card-header').forEach((header) => {
-      const user = header.querySelector('#UserName').innerText;
-      const time = header.querySelector('.text-body-secondary').innerText;
-      const content = header.nextElementSibling.querySelector('#cardtext').innerText;
+    const userElement = header.querySelector('#UserName');
+    const timeElement = header.querySelector('.text-body-secondary');
+    const contentElement = header.nextElementSibling.querySelector('#cardtext');
+
+    if (userElement && timeElement && contentElement) {
+      const user = userElement.innerText;
+      const time = timeElement.innerText;
+      const content = contentElement.innerText;
 
       posts.push({ user, time, content });
+    }
   });
 
-  
   localStorage.setItem('posts', JSON.stringify(posts));
 }
-
 
 function saveChanges(){
   const editPostContent = document.getElementById('editPostContent');
@@ -358,9 +343,7 @@ function saveChanges(){
 
   const postText = document.querySelector('#cardtext');
   postText.innerText = newText;
-
   
-
   const editModal = new bootstrap.Modal(document.getElementById('editModal'));
   editModal.hide();
 
@@ -374,33 +357,65 @@ const editModal = new bootstrap.Modal(document.getElementById('editModal'));
 editModal.hide();
 
 
+function deletePost(deleteButton) {
+  const postContainer = deleteButton.closest('.card-header');
+  const cardContainer = document.getElementById('cardContainer');
 
 
+  if (cardContainer.contains(postContainer)) {
+    cardContainer.removeChild(postContainer);
 
-window.onload = function () {
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) ;
-
-  if (loggedInUser) {
-    const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
-    const cardContainer = document.getElementById('cardContainer');
-
-    storedPosts.forEach((post) => {
-      const newPost = document.createElement('div');
-      newPost.className = 'card-header';
-      newPost.innerHTML = `
-        <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
-        <span id="UserName">${post.user}</span>
-        <p class="card-text"><small class="text-body-secondary">${post.time}</small></p>               
-      </div>
-      <div class="card mb-3">
-        <img src="" class="card-img-top" alt="" id="cardimage">
-        <div class="card-body">
-          <h5 class="card-title" id="cardtitle"></h5>
-          <p class="card-text" id="cardtext">${post.content}</p>
-        </div>
-      </div>`;
-
-      cardContainer.appendChild(newPost);
-    });
+    updateLocalStoragePosts();
   }
-};
+}
+
+
+
+
+function loadPosts() {
+  const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+  const cardContainer = document.getElementById('cardContainer');
+
+  
+  cardContainer.innerHTML = '';
+
+  
+  storedPosts.forEach((post) => {
+      renderPost(post);
+  });
+}
+
+function renderPost(post) {
+  const cardContainer = document.getElementById('cardContainer');
+
+  
+
+  const postElement = document.createElement('div');
+  postElement.className = 'card-header';
+  postElement.innerHTML = `
+    <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
+    <span id="UserName">${post.user}</span>
+    <p class="card-text"><small class="text-body-secondary">${post.time}</small></p>               
+    ${post.useremail === loggedInUser.email
+      ? `<button class="bi bi-pencil-square btn btn-outline-primary ms-2" onclick="editPost(this)">Edit</button>
+      <button class="bi bi-trash btn btn-outline-danger ms-2" onclick="deletePost(this)">Delete</button>`
+   : ''
+}
+  </div>
+  <div class="card mb-3">
+    <img src="" class="card-img-top" alt="" id="cardimage">
+    <div class="card-body">
+      <h5 class="card-title" id="cardtitle"></h5>
+      <p class="card-text" id="cardtext">${post.content}</p>
+    </div>
+  </div>`;
+
+  cardContainer.insertBefore(postElement, cardContainer.firstChild);
+
+  
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadPosts();
+});
