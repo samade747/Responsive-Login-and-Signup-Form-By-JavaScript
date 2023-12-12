@@ -302,17 +302,15 @@ updateLocalStoragePosts();
 
 
 function editPost(editButton) {
-  const postContainer = editButton.parentElement.parentElement;
-  console.log(postContainer);
+  const postContainer = editButton.closest('.card');
   const postText = postContainer.querySelector('#cardtext');
-  console.log(postText);
-   const editPostContent = document.getElementById('editPostContent')
+  const editPostContent = document.getElementById('editPostContent');
 
+ 
   editPostContent.value = postText.innerText;
 
   const editModal = new bootstrap.Modal(document.getElementById('editModal'));
-  editModal.show()
-  
+  editModal.show();
 }
 
 
@@ -323,8 +321,7 @@ function updateLocalStoragePosts() {
   cardContainer.querySelectorAll('.card-header').forEach((header) => {
     const userElement = header.querySelector('#UserName');
     const timeElement = header.querySelector('.text-body-secondary');
-    const contentElement = header.nextElementSibling.querySelector('#card-text');
-    console.log(contentElement);
+    const contentElement = header.nextElementSibling && header.nextElementSibling.querySelector('#card-text');
 
     if (userElement && timeElement && contentElement) {
       const user = userElement.innerText;
@@ -337,6 +334,7 @@ function updateLocalStoragePosts() {
 
   localStorage.setItem('posts', JSON.stringify(posts));
 }
+
 
 function saveChanges(){
   const editPostContent = document.getElementById('editPostContent');
@@ -419,4 +417,6 @@ function renderPost(post) {
 
   
 }
+
+
 
