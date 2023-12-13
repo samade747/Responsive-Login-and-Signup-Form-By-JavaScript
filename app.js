@@ -259,7 +259,7 @@ function addPost(){
   postElement.innerHTML = `
     <img id="ProfileImage" src="./images/profile.png" alt="" width="30px">
     <span id="UserName">${newPost.user}</span>
-    <p class="card-text" id="cardtext"><small class="text-body-secondary">${newPost.time}</small></p>               
+    <p class="card-text" id="cardtext1"><small class="text-body-secondary">${newPost.time}</small></p>               
     ${newPost.useremail === loggedInUser.email
       ? `<button class="bi bi-pencil-square btn btn-outline-primary ms-2" onclick="editPost(this)">Edit</button>
       <button class="bi bi-trash btn btn-outline-danger ms-2" onclick="deletePost(this)">Delete</button>`
