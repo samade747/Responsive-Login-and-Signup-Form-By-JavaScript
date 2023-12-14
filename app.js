@@ -22,11 +22,11 @@ function registerNow(){
             title: "required...",
             text: "please fill all fields carefully!",            
           });
-    } else if (password.value !== confirmPassword.value) {
+    } else if (password.value !== confirmPassword.value || password.value.length < 8) {
         Swal.fire({
             icon: "error",
             title: "password...",
-            text: "Password & Confirm Password Mismatch!",            
+            text: "Password & Confirm Password Mismatch! or password must be 8 characters long!",            
           });
     }  else {
         const Toast = Swal.mixin({
@@ -143,6 +143,15 @@ function login(){
       icon: "error",
       title: "Password mismatch",
       text: "Email or Password is invalid!",
+    });
+    return;
+  }
+
+  if(user.password.value <8 ){
+    Swal.fire({
+      icon: "error",
+      title: "Password 8 Characters long",
+      text: "Passowrd must be in 8 words!",
     });
     return;
   }
@@ -311,6 +320,17 @@ function editPost(editButton) {
 
   const editModal = new bootstrap.Modal(document.getElementById('editModal'));
   editModal.show();
+
+  // const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+  
+
+  setTimeout(() =>{
+    editModal.hide();      
+  },5000);
+
+
+
+
 }
 
 
@@ -352,8 +372,7 @@ function saveChanges(){
 }
 
 
-const editModal = new bootstrap.Modal(document.getElementById('editModal'));
-editModal.hide();
+
 
 
 function deletePost(deleteButton) {
