@@ -109,6 +109,12 @@ function logOut() {
 }
 
 
+function closemodal(){
+  const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+  editModal.hide();
+  
+}
+
 
 
 function login(){
@@ -325,8 +331,12 @@ function editPost(editButton) {
   
 
   setTimeout(() =>{
+    let abc = document.getElementById('abc');
+    console.log(abc);
+    // abc.setAttribute('class', 'd-none');
     editModal.hide();      
-  },5000);
+    // abc.setAttribute('class', 'd-block btn btn-primary');
+  }, 6000);
 
 
 
