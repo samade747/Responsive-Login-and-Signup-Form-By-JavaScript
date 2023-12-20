@@ -87,7 +87,7 @@ function registerNow(){
 
     
 }
-
+loadPosts();
 }
 
 
@@ -184,6 +184,8 @@ function login(){
 setTimeout(() =>{
   window.location.replace('./dashboard.html'); 
   },4000);
+
+  loadPosts();
 
 }
 
@@ -321,6 +323,7 @@ function editPost(editButton) {
   const postText = postContainer.querySelector('#cardtext');
   const editPostContent = document.getElementById('editPostContent');
 
+  if(userElement.innerText === loggedInUser.email){
  
   editPostContent.value = postText.innerText;
 
@@ -338,7 +341,9 @@ function editPost(editButton) {
     // abc.setAttribute('class', 'd-block btn btn-primary');
   }, 6000);
 
-
+} else {
+  console.log('not authorized to edit post')
+}
 
 
 }
@@ -389,18 +394,19 @@ function deletePost(deleteButton) {
   const postContainer = deleteButton.closest('.card-header');
   const cardContainer = document.getElementById('cardContainer');
 
+  if (userElement.innerText === loggedInUser.email) {
 
   if (cardContainer.contains(postContainer)) {
     cardContainer.removeChild(postContainer);
 
     updateLocalStoragePosts();
   }
+} else {
+  console.log('You are not authorized to delete this post.');
 }
 
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-  loadPosts();
-});
 
 
 
@@ -449,3 +455,6 @@ function renderPost(post) {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  loadPosts();
+});
