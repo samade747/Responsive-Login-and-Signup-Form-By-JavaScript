@@ -12,6 +12,12 @@
 
     let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || [];
 
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadPosts();
+    });
+    
+
     
 
 function registerNow(){
@@ -185,7 +191,7 @@ setTimeout(() =>{
   window.location.replace('./dashboard.html'); 
   },4000);
 
-  loadPosts();
+  
 
 }
 
@@ -314,16 +320,39 @@ updateLocalStoragePosts();
 
 }
 
+function updateLocalStoragePosts() {
+  const cardContainer = document.getElementById('cardContainer');
+  const posts = [];
+
+  cardContainer.querySelectorAll('.card-header').forEach((header) => {
+    const userElement = header.querySelector('#UserName');
+    const timeElement = header.querySelector('.text-body-secondary');
+    const contentElement = header.nextElementSibling && header.nextElementSibling.querySelector('#card-text');
+
+    if (userElement && timeElement && contentElement) {
+      const user = userElement.innerText;
+      const time = timeElement.innerText;
+      const content = contentElement.innerText;
+
+      posts.push({ user, time, content });
+    }
+  });
+
+  localStorage.setItem('posts', JSON.stringify(posts));
+  loadPosts()
+}
 
 
 
 
 function editPost(editButton) {
-  const postContainer = editButton.closest('.card');
+  const postContainer = editButton.closest('.card-header');
   const postText = postContainer.querySelector('#cardtext');
   const editPostContent = document.getElementById('editPostContent');
 
-  if(userElement.innerText === loggedInUser.email){
+  const userElement = postContainer.querySelector('#UserName');
+
+  if(userElement.innerText === loggedInUser.fullName){
  
   editPostContent.value = postText.innerText;
 
@@ -349,26 +378,6 @@ function editPost(editButton) {
 }
 
 
-function updateLocalStoragePosts() {
-  const cardContainer = document.getElementById('cardContainer');
-  const posts = [];
-
-  cardContainer.querySelectorAll('.card-header').forEach((header) => {
-    const userElement = header.querySelector('#UserName');
-    const timeElement = header.querySelector('.text-body-secondary');
-    const contentElement = header.nextElementSibling && header.nextElementSibling.querySelector('#card-text');
-
-    if (userElement && timeElement && contentElement) {
-      const user = userElement.innerText;
-      const time = timeElement.innerText;
-      const content = contentElement.innerText;
-
-      posts.push({ user, time, content });
-    }
-  });
-
-  localStorage.setItem('posts', JSON.stringify(posts));
-}
 
 
 function saveChanges(){
@@ -392,9 +401,14 @@ function saveChanges(){
 
 function deletePost(deleteButton) {
   const postContainer = deleteButton.closest('.card-header');
+  console.log(postContainer)
   const cardContainer = document.getElementById('cardContainer');
+  console.log(cardContainer)
 
-  if (userElement.innerText === loggedInUser.email) {
+  const userElement = postContainer.querySelector('#UserName');
+  
+
+  if (userElement.innerText === loggedInUser.fullName) {
 
   if (cardContainer.contains(postContainer)) {
     cardContainer.removeChild(postContainer);
@@ -413,7 +427,7 @@ function deletePost(deleteButton) {
 function loadPosts() {
   const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
   const cardContainer = document.getElementById('cardContainer');
-
+  console.log(storedPosts);
   
   cardContainer.innerHTML = '';
 
@@ -421,6 +435,7 @@ function loadPosts() {
   storedPosts.forEach((post) => {
       renderPost(post);
   });
+  console.log(storedPosts);
 }
 
 function renderPost(post) {
@@ -455,6 +470,3 @@ function renderPost(post) {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  loadPosts();
-});
